@@ -1,10 +1,10 @@
 /*
  * @Author: liszter <liszter@qq.com>
  * @Date: 2023-08-29 10:48:37
- * @LastEditTime: 2023-09-01 08:55:35
+ * @LastEditTime: 2023-10-17 14:06:14
  * @LastEditors: lishutao
  * @Description: 暂无
- * @FilePath: \electron-vite-project\electron\main.ts
+ * @FilePath: \image-annotation-tool\electron\main.ts
  */
 import { app, BrowserWindow } from 'electron'
 import path from 'node:path'
@@ -32,10 +32,10 @@ function createWindow() {
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
     },
-    width: 320,
-    height: 220,
+    width: 800,
+    height: 600,
     // 永远置顶
-    alwaysOnTop: true,
+    alwaysOnTop: false,
   })
   // 去掉菜单栏
   // win.setMenu(null)
