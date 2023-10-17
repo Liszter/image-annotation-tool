@@ -1,18 +1,19 @@
 /*
  * @Author: liszter <liszter@qq.com>
- * @Date: 2023-08-29 10:48:37
- * @LastEditTime: 2023-09-01 09:08:32
+ * @Date: 2023-10-17 10:37:43
+ * @LastEditTime: 2023-10-17 10:51:44
  * @LastEditors: lishutao
  * @Description: 暂无
- * @FilePath: \electron-vite-project\src\App.tsx
+ * @FilePath: \image-annotation-tool\src\App.tsx
  */
 import { HashRouter, Routes, Route } from "react-router-dom";
 
 import About from "./pages/About";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
-import Clock from "./pages/Clock/Clock"
+import Clock from "./pages/Clock/Clock";
 
+import Markpage from "./pages/MarkPage/Markpage";
 
 function App() {
 
@@ -25,7 +26,7 @@ function App() {
              <Route path="about" element={<About />} />
              <Route path="NotFound" element={<NotFound />} />
              <Route path="Clock" element={<Clock />} />
-
+             <Route path="Markpage" element={<Markpage />} />
         </Route>
       </Routes>
     </HashRouter>

@@ -1,3 +1,11 @@
+/*
+ * @Author: liszter <liszter@qq.com>
+ * @Date: 2023-10-17 10:37:43
+ * @LastEditTime: 2023-10-17 10:50:12
+ * @LastEditors: lishutao
+ * @Description: 暂无
+ * @FilePath: \image-annotation-tool\src\pages\Clock\Clock.tsx
+ */
 import { useState, useEffect, useRef } from "react";
 
 import "./Clock.css";

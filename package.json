@@ -1,9 +1,9 @@
 {
-  "name": "electron-vite-project",
+  "name": "image-annotation-tool",
   "private": true,
   "version": "0.0.2",
   "author": "liszter",
-  "description":"tomatoTime",
+  "description":"image-annotation-tool",
   "scripts": {
     "dev": "vite",
     "tsc": "tsc",
