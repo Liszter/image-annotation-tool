@@ -19,9 +19,6 @@ export default function EditForm() {
 
     navigator.clipboard.readText().then((pastedData) => {
       // 在这里处理剪贴板中的文本内容
-      console.log('剪贴板内容:', pastedData);
-
-      console.log(event)
       event.target.value = pastedData
     }).catch((error) => {
       console.error('无法读取剪贴板内容:', error);
@@ -41,7 +38,7 @@ export default function EditForm() {
       layout="vertical" 
       autoComplete='off'
       onValuesChange={(_, values) => {
-        console.log(values);
+        console.log(12123123, values);
         setValues(values);
       }}
       >
