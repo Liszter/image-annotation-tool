@@ -1,7 +1,7 @@
 /*
  * @Author: liszter <liszter@qq.com>
  * @Date: 2023-08-29 10:48:37
- * @LastEditTime: 2023-10-18 16:29:45
+ * @LastEditTime: 2023-10-19 10:48:35
  * @LastEditors: lishutao
  * @Description: 暂无
  * @FilePath: \image-annotation-tool\electron\main.ts
@@ -39,8 +39,8 @@ function createWindow() {
             webSecurity: false
             // enableRemoteModule: true,//开启remote模块
     },
-    width: 1366,
-    height: 780,
+    width: 1920,
+    height: 1080,
     show: false, // 默认不显示
     // 永远置顶
     alwaysOnTop: false,

@@ -12,6 +12,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@arco-design/web-react": "^2.54.1",
     "@electron/remote": "^2.0.12",
     "@types/electron": "^1.6.10",
     "@types/node": "^20.8.6",

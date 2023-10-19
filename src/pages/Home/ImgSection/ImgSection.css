@@ -1,0 +1,110 @@
+/* imgs */
+.img-section {
+  position: relative;
+  height: 407px;
+  width: 1770px;
+  padding: 0 60px 20px 60px;
+}
+
+.img-list {
+  display: flex;
+  overflow-x: auto;
+  padding: 0 0 20px 0;
+}
+
+.img-warp {
+  background-color: #eee;
+  padding: 2px;
+}
+
+.img-id {
+  height: 48px;
+  line-height: 48px;
+  text-align: center;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.pre-btn {
+  position: absolute;
+  left: 10px;
+  top: 185px;
+}
+
+.next-btn {
+  position: absolute;
+  right: 10px;
+  top: 185px;
+}
+
+/* foot */
+.footer-form {
+  width: 1880px;
+  height: 500px;
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  margin: 20px;
+  background-color: rgb(229, 230, 235);
+}
+  /* 自定义滚动条样式 */
+.img-section  ::-webkit-scrollbar {
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+    border-radius: 6px;
+  }
+
+.img-section  ::-webkit-scrollbar-track {
+    cursor: pointer;
+
+    background-color: #fff;
+    box-shadow: 4px 4px 4px #ccc inset, -4px -4px 4px #ccc inset ;
+  }
+
+.img-section  ::-webkit-scrollbar-thumb {
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+
+    background: url("../../../assets/icon_mouse.svg") center no-repeat;
+    background-size: 30px 30px;
+    /* background-color: #777; */
+    transform: scale(0.8);
+    border-radius: 50%;
+  }
+
+.img-section  ::-webkit-scrollbar-thumb:hover {
+    width: 30px;
+    height: 30px;
+    background-color: #ffffffee;
+    cursor: pointer;
+  
+  }
+  
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 20px;
+}
+.justify-between {
+  justify-content: flex-start;
+}
+
+.justify-start {
+  justify-content: flex-start;
+}
+
+.flex >div {
+  width: 174px;
+  padding-right: 10px;
+
+}
+
+.title-box {
+  background-color: rgb(220, 220, 220);
+  color: #000;
+  height: 32px;
+  line-height: 32px;
+  padding-left: 6px;
+}
