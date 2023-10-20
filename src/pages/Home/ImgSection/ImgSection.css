@@ -17,6 +17,10 @@
   padding: 2px;
 }
 
+.section-id {
+  text-align: center;
+}
+
 .img-id {
   height: 48px;
   line-height: 48px;
@@ -107,4 +111,48 @@
   height: 32px;
   line-height: 32px;
   padding-left: 6px;
+}
+
+
+.upload-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  flex-direction: column;
+
+
+  border: seagreen 1px dashed;
+
+  padding: 100px 0;
+}
+
+.upload-icon {
+
+
+}
+
+.upload-btn button {
+  width: 240px;
+  height: 40px;
+  line-height: 40px;
+  margin-top: 50px;
+  padding: 0;
+  border: 0;
+  outline: 0;
+
+  background-color: #5874c6;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+
+  border-radius: 6px;
+
+  box-shadow: 2px 2px 6px #333;
+
+
+}
+.upload-btn button:hover {
+  background-color: #506298;
+
 }

@@ -1,7 +1,7 @@
 /*
  * @Author: liszter <liszter@qq.com>
  * @Date: 2023-08-29 10:48:37
- * @LastEditTime: 2023-10-19 10:48:35
+ * @LastEditTime: 2023-10-20 15:28:34
  * @LastEditors: lishutao
  * @Description: 暂无
  * @FilePath: \image-annotation-tool\electron\main.ts
@@ -33,11 +33,11 @@ function createWindow() {
     icon: path.join(process.env.PUBLIC, 'electron-vite.svg'),
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
-        // 开启node
-            nodeIntegration: true, // node 集成环境
-            contextIsolation: false,
-            webSecurity: false
-            // enableRemoteModule: true,//开启remote模块
+      // 开启node
+      nodeIntegration: true, // node 集成环境
+      contextIsolation: false,
+      webSecurity: false
+      // enableRemoteModule: true,//开启remote模块
     },
     width: 1920,
     height: 1080,
@@ -46,7 +46,7 @@ function createWindow() {
     alwaysOnTop: false,
   })
 
-  
+
 
   // 去掉菜单栏
   // win.setMenu(null)
@@ -64,24 +64,23 @@ function createWindow() {
   }
 
   // 避免白屏的问题
-  win.on('ready-to-show', ()=> {
+  win.on('ready-to-show', () => {
     win?.show()
 
     // 监听dialog
 
-    ipcMain.on('chooseFile', (event) => {
-      dialog.showOpenDialog({
-        properties: ['openFile', 'multiSelections']
-        // properties: ['openDirectory', 'multiSelections']
-
-      }).then(res => {
-        console.log(res)
-        event.reply('chooseResult', res)
-      }).catch(err => {
-        console.log(err)
-        event.reply('chooseResult', err)
-      })
-    })
+    // ipcMain.on('chooseFile', (event) => {
+    //   dialog.showOpenDialog({
+    //     properties: ['openFile', 'multiSelections']
+    //     // properties: ['openDirectory', 'multiSelections']
+    //   }).then(res => {
+    //     console.log(res)
+    //     event.reply('chooseResult', res)
+    //   }).catch(err => {
+    //     console.log(err)
+    //     event.reply('chooseResult', err)
+    //   })
+    // })
   })
 }
 

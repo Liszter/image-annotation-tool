@@ -40,3 +40,15 @@
   line-height: 32px;
   padding-left: 6px;
 }
+
+.export-box {
+  height: 80px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  margin-right: 10px;
+}
+
+.export-box button {
+  width: 160px;
+}

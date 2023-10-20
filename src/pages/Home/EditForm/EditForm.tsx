@@ -1,10 +1,11 @@
 import React from 'react'
-
+import { ipcRenderer } from 'electron';
 import { Form, Input, Button, InputNumber } from '@arco-design/web-react';
 const FormItem = Form.Item;
-
+const { TextArea } = Input;
 import { Select } from '@arco-design/web-react';
-
+import { createExcel } from "../../../utils/excelFunc";
+import './EditForm.css'
 const Option = Select.Option;
 
 
@@ -13,6 +14,7 @@ const options1 = ['不熟', '尚熟', '成熟', '过熟'];
 
 
 export default function EditForm() {
+  // 粘贴功能
   const handlePaste = (event) => {
     // 阻止默认的粘贴事件，避免浏览器默认将内容粘贴到输入框中
     event.preventDefault();
@@ -25,14 +27,24 @@ export default function EditForm() {
     });
   };
 
-  const [values, setValues] = React.useState();
+  // 导出功能
+  const handleExportExcel = () => {
 
+    console.log(123, values)
+    // 创建 excel  values 表格数据
+    
+    // path  路径
+
+    createExcel('202303091231', values, 'ppppppppppp')
+  }
+
+  const [values, setValues] = React.useState();
 
   return (
     <>
      {/* 底部表单 */}
      <div className="footer-form">
-     {JSON.stringify(values)}
+     {/* {JSON.stringify(values)} */}
      <Form
       style={{ width: '100%' }}
       layout="vertical" 
@@ -156,7 +168,7 @@ export default function EditForm() {
            <Input placeholder='' onFocus={handlePaste} allowClear showWordLimit={true} />
          </FormItem>
 
-         <FormItem label='生长部位'>
+         <FormItem label='生长部位' field='three.position'>
            <Select placeholder='选择生产部位' style={{ width: 154 }} allowClear>
              {options.map((option) => (
                <Option key={option} value={option}>
@@ -166,7 +178,7 @@ export default function EditForm() {
            </Select>
          </FormItem>
 
-         <FormItem label='成熟度'>
+         <FormItem label='成熟度' field='three.process'>
            <Select placeholder='选择成熟度' style={{ width: 154 }} allowClear>
              {options1.map((option) => (
                <Option key={option}  value={option}>
@@ -177,12 +189,16 @@ export default function EditForm() {
          </FormItem>
 
          <FormItem label='备注' field='three.remark' style={{ flex: 1 }}>
-           <Input placeholder='' allowClear showWordLimit={true} />
+           <TextArea placeholder='' style={{height: '100px'}} allowClear showWordLimit={true} />
          </FormItem>
-
        </div>
 
      </Form>
+
+{/* 导出 box */}
+     <div className='export-box'>
+      <Button type='primary' onClick={handleExportExcel}>导出</Button>
+     </div>
    </div>
    </>
   )
