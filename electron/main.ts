@@ -1,12 +1,12 @@
 /*
  * @Author: liszter <liszter@qq.com>
  * @Date: 2023-08-29 10:48:37
- * @LastEditTime: 2023-10-20 15:28:34
+ * @LastEditTime: 2023-10-23 09:12:45
  * @LastEditors: lishutao
  * @Description: 暂无
  * @FilePath: \image-annotation-tool\electron\main.ts
  */
-import { app, BrowserWindow, dialog, ipcMain } from 'electron'
+import { app, BrowserWindow, dialog, ipcMain, screen } from 'electron'
 import path from 'node:path'
 
 // The built directory structure
@@ -28,6 +28,8 @@ const VITE_DEV_SERVER_URL = process.env['VITE_DEV_SERVER_URL']
 
 function createWindow() {
 
+const { width, height } = screen.getPrimaryDisplay().bounds; 
+
 
   win = new BrowserWindow({
     icon: path.join(process.env.PUBLIC, 'electron-vite.svg'),
@@ -39,8 +41,8 @@ function createWindow() {
       webSecurity: false
       // enableRemoteModule: true,//开启remote模块
     },
-    width: 1920,
-    height: 1080,
+    width: width,
+    height: height,
     show: false, // 默认不显示
     // 永远置顶
     alwaysOnTop: false,

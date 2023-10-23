@@ -32,12 +32,19 @@ export default function ImgSection() {
   };
 
   const handleChoose = (e) => {
-    console.log(e.target.files, typeof e.target.files)
+    console.log(e.target.files)
+    const filepath = e.target.files[0].path
+    console.log('filepath', filepath)
+
+    const regExp = /(?<=\\)[^\\]+(?=\\[^\\]+$)/;
+    const result = filepath.match(regExp);
+    console.log('resultPath', result[0]); // 输出: yz1_10_0_0922_1001
     const pathObj = e.target.files
+    
     const path = []
     Object.keys(pathObj).forEach(key => {
       const value = pathObj[key];
-      console.log(`Key: ${key}, Value: ${value}`);
+      // console.log(`Key: ${key}, Value: ${value}`);
       
       path.push({
         id: key,

@@ -22,7 +22,27 @@ const getColumnNameByIndex = (i: number) => {
  * */
 export function createExcel(tableName: string, tableData: object, path: string) {
 
-  console.log(tableData, tableName)
+  console.log(444, tableData, tableName)
+
+
+  
+  const pathObj = {
+    path: path
+  }
+
+  const oneObj = JSON.parse(JSON.stringify(tableData.one))
+  const twoSheetObj = JSON.parse(JSON.stringify(tableData.two))
+  const threeSheetObj = JSON.parse(JSON.stringify(tableData.three))
+
+  
+  // 表格数据
+  // tableData
+  const data1 = Object.assign(oneObj, pathObj)
+  const data2 = Object.assign(twoSheetObj, pathObj)
+  const data3 = Object.assign(threeSheetObj, pathObj)
+
+  console.log('data1', data1, data2, data3)
+
 
 
   // 创建
@@ -74,16 +94,6 @@ export function createExcel(tableName: string, tableData: object, path: string) 
   worksheet2.columns = tableHeader2
   worksheet3.columns = tableHeader3
 
-
-  const pathObj = {
-    path: path
-  }
-
-  // 表格数据
-  // tableData
-  const data1 = Object.assign(pathObj, tableData.one)
-  const data2 = Object.assign(pathObj, tableData.two)
-  const data3 = Object.assign(pathObj, tableData.three)
 
   //设置表头样式
   const style = {
