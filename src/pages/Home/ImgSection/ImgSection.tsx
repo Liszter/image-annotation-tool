@@ -3,10 +3,12 @@ import { ipcRenderer } from 'electron';
 const FormItem = Form.Item;
 
 import { Image, Space } from '@arco-design/web-react';
-import { IconCaretLeft, IconCaretRight } from '@arco-design/web-react/icon';
+import { IconBackward, IconCaretLeft, IconCaretRight, IconForward  } from '@arco-design/web-react/icon';
 import CopyButton from '../../../components/CopyButton/CopyButton';
 import { useRef, useState } from 'react';
 import "./ImgSection.css";
+
+import { storage } from '../../../utils';
 
 import uploadImage from '../../../assets/icon_upload.svg'
 
@@ -21,13 +23,25 @@ export default function ImgSection() {
 
   const scrollLeft = () => {
     if (containerRef.current) {
-      containerRef.current.scrollLeft -= 435 + 8; // 向左滚动 100 像素
+      containerRef.current.scrollLeft -= 435 + 12; // 向左滚动 100 像素
+    }
+  };
+
+  const scrollLeftX4 = () => {
+    if (containerRef.current) {
+      containerRef.current.scrollLeft -= (435 + 12) * 4; // 向左滚动 100 像素
     }
   };
 
   const scrollRight = () => {
     if (containerRef.current) {
-      containerRef.current.scrollLeft += 435 + 8; // 向右滚动 100 像素
+      containerRef.current.scrollLeft += 435 + 12; // 向右滚动 100 像素
+    }
+  };
+
+  const scrollRightX4 = () => {
+    if (containerRef.current) {
+      containerRef.current.scrollLeft += (435 + 12) * 4; // 向右滚动 100 像素
     }
   };
 
@@ -36,9 +50,19 @@ export default function ImgSection() {
     const filepath = e.target.files[0].path
     console.log('filepath', filepath)
 
+    // 保存结果文件
     const regExp = /(?<=\\)[^\\]+(?=\\[^\\]+$)/;
     const result = filepath.match(regExp);
-    console.log('resultPath', result[0]); // 输出: yz1_10_0_0922_1001
+
+    // 保存结果文件的 文件夹路径
+    const folderPathRegex = /^(.*[\\\/])[^\\\/]+$/; // 正则表达式
+    const folderPath = filepath.match(folderPathRegex)[1];
+
+
+    storage.set('resultPath', result[0])
+    storage.set('folderPath', folderPath)
+
+
     const pathObj = e.target.files
     
     const path = []
@@ -97,9 +121,14 @@ export default function ImgSection() {
 
         <div className='pre-btn'>
           <Button shape='circle' type='outline' onClick={scrollLeft} icon={<IconCaretLeft />} />
+
+          <Button shape='circle' type='outline' onClick={scrollLeftX4} icon={<IconBackward />} />
+
         </div>
         <div className='next-btn'>
           <Button shape='circle' type='outline' onClick={scrollRight} icon={<IconCaretRight />} />
+          <Button shape='circle' type='outline' onClick={scrollRightX4} icon={<IconForward />} />
+        
         </div>
       </div>
     ) : (
@@ -112,7 +141,7 @@ export default function ImgSection() {
           <label htmlFor={'chooseF'}>
           <button onClick={()=>handleClickUpload(event)}>点击上传图片文件</button>
 
-          <input style={{display: 'none'}} type="file" id='chooseF' accept="image/**" onInput={handleChoose} multiple/>
+          <input style={{display: 'none'}} type="file" id='chooseF' accept="image/*" onInput={handleChoose} multiple/>
           </label>
 
         </div>

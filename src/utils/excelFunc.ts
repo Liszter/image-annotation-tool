@@ -1,5 +1,9 @@
 import ExcelJS from 'exceljs';
 import fileSaver from 'file-saver';
+import fs from "electron"
+import { ipcRenderer } from 'electron';
+
+import { storage } from '../utils/index';
 
 //通过列数获取excel表头编号
 const getColumnNameByIndex = (i: number) => {
@@ -22,9 +26,10 @@ const getColumnNameByIndex = (i: number) => {
  * */
 export function createExcel(tableName: string, tableData: object, path: string) {
 
+
+
+
   console.log(444, tableData, tableName)
-
-
   
   const pathObj = {
     path: path
@@ -154,8 +159,6 @@ export function createExcel(tableName: string, tableData: object, path: string) 
     worksheet1.getColumn(i).width = maxLen //列宽
   }
 
-
-
   //遍历工作表，给需要添加样式的单元格添加相应的样式
   for (let i = 1; i < worksheet2.columns.length + 1; i++) {
     const cellName = getColumnNameByIndex(i - 1) + 1
@@ -181,9 +184,6 @@ export function createExcel(tableName: string, tableData: object, path: string) 
     maxLen > 20 ? (maxLen = 20) : null
     worksheet2.getColumn(i).width = maxLen //列宽
   }
-
-
-
 
   //遍历工作表，给需要添加样式的单元格添加相应的样式
   for (let i = 1; i < worksheet3.columns.length + 1; i++) {
@@ -214,12 +214,29 @@ export function createExcel(tableName: string, tableData: object, path: string) 
 
   // 导出
   workbook.xlsx.writeBuffer().then(function (buffer) {
-    fileSaver(
-      new Blob([buffer], {
-        type: 'application/octet-stream'
-      }),
-      `${tableName}.xlsx`
-    )
+
+
+    
+    const filePath = storage.get('folderPath')
+    // fs.writeFile(filePath, Buffer.from(buffer), (err) => {
+    //   if (err) throw err;
+    //   console.log('Blob file saved successfully!');
+    // });
+
+    ipcRenderer.send('saveFile', {
+      filePath: filePath + "/" + tableName + '.xlsx',
+      buffer: buffer
+    });
+
+
+
+
+    // fileSaver(
+    //   new Blob([buffer], {
+    //     type: 'application/octet-stream'
+    //   }),
+    //   `${tableName}.xlsx`
+    // )
   })
 
 }

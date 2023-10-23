@@ -6,6 +6,8 @@ const { TextArea } = Input;
 import { Select } from '@arco-design/web-react';
 import { createExcel } from "../../../utils/excelFunc";
 import './EditForm.css'
+import { storage } from '../../../utils';
+
 const Option = Select.Option;
 
 
@@ -34,8 +36,11 @@ export default function EditForm() {
     // 创建 excel  values 表格数据
     
     // path  路径
+    const resultPath = storage.get('resultPath')
 
-    createExcel('202303091231', values, 'ppppppppppp')
+    console.log(6666, resultPath)
+
+    createExcel(resultPath, values, resultPath)
   }
 
   const [values, setValues] = React.useState();
@@ -189,7 +194,7 @@ export default function EditForm() {
          </FormItem>
 
          <FormItem label='备注' field='three.remark' style={{ flex: 1 }}>
-           <TextArea placeholder='' style={{height: '100px'}} allowClear showWordLimit={true} />
+           <TextArea placeholder=''  autoSize={{ minRows: 2, maxRows: 3 }} allowClear showWordLimit={true} />
          </FormItem>
        </div>
 

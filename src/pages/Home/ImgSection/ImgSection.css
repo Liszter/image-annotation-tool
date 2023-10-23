@@ -32,14 +32,29 @@
 .pre-btn {
   position: absolute;
   left: 10px;
-  top: 185px;
+  top: 175px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.pre-btn button {
+  margin: 10px 0;
 }
 
 .next-btn {
   position: absolute;
   right: 10px;
-  top: 185px;
+  top: 175px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
+
+.next-btn button {
+  margin: 10px 0;
+}
+
 
 /* foot */
 .footer-form {

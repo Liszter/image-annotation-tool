@@ -6,12 +6,11 @@
 /* foot */
 .footer-form {
   width: 1880px;
-  height: 500px;
+  height: 480px;
   position: absolute;
   bottom: 0px;
   left: 0;
   margin: 20px;
-  background-color: rgb(229, 230, 235);
 }
   
 .flex {
@@ -42,7 +41,7 @@
 }
 
 .export-box {
-  height: 80px;
+  height: 60px;
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;

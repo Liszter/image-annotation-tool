@@ -2,17 +2,6 @@
   background-color: #fff;
   padding: 20px;
 }
-
-/* foot */
-.footer-form {
-  width: 1880px;
-  height: 500px;
-  position: absolute;
-  bottom: 0px;
-  left: 0;
-  margin: 20px;
-  background-color: rgb(229, 230, 235);
-}
   
 .flex {
   display: flex;

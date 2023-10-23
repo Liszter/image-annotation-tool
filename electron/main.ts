@@ -1,13 +1,15 @@
 /*
  * @Author: liszter <liszter@qq.com>
  * @Date: 2023-08-29 10:48:37
- * @LastEditTime: 2023-10-23 09:12:45
+ * @LastEditTime: 2023-10-23 14:55:33
  * @LastEditors: lishutao
  * @Description: 暂无
  * @FilePath: \image-annotation-tool\electron\main.ts
  */
 import { app, BrowserWindow, dialog, ipcMain, screen } from 'electron'
 import path from 'node:path'
+
+import fs from 'fs';
 
 // The built directory structure
 //
@@ -42,6 +44,8 @@ const { width, height } = screen.getPrimaryDisplay().bounds;
       // enableRemoteModule: true,//开启remote模块
     },
     width: width,
+    minWidth: width,
+    minHeight: height,
     height: height,
     show: false, // 默认不显示
     // 永远置顶
@@ -83,6 +87,30 @@ const { width, height } = screen.getPrimaryDisplay().bounds;
     //     event.reply('chooseResult', err)
     //   })
     // })
+
+    // 导出文件
+    const handleSaveFile = (event, { filePath, buffer }) => {
+      dialog.showSaveDialog({ defaultPath: filePath })
+        .then(result => {
+          if (!result.canceled) {
+            const fileToSave = result.filePath;
+            fs.writeFile(fileToSave, buffer, (err) => {
+              if (err) {
+                event.reply('saveFileResponse', { success: false, error: err.message });
+              } else {
+                event.reply('saveFileResponse', { success: true });
+              }
+            });
+          }
+        })
+        .catch(err => {
+          event.reply('saveFileResponse', { success: false, error: err.message });
+        });
+    }
+
+    ipcMain.on('saveFile', handleSaveFile);
+
+
   })
 }
 
