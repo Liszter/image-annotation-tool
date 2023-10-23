@@ -1,12 +1,12 @@
 /*
  * @Author: liszter <liszter@qq.com>
  * @Date: 2023-08-29 10:48:37
- * @LastEditTime: 2023-10-23 14:55:33
+ * @LastEditTime: 2023-10-23 15:48:50
  * @LastEditors: lishutao
  * @Description: 暂无
  * @FilePath: \image-annotation-tool\electron\main.ts
  */
-import { app, BrowserWindow, dialog, ipcMain, screen } from 'electron'
+import { app, BrowserWindow, dialog, ipcMain, screen, Menu } from 'electron'
 import path from 'node:path'
 
 import fs from 'fs';
@@ -68,6 +68,25 @@ const { width, height } = screen.getPrimaryDisplay().bounds;
     // win.loadFile('dist/index.html')
     win.loadFile(path.join(process.env.DIST, 'index.html'))
   }
+
+
+  // const menuTemp = [
+  //   { 
+  //     label: '重置',
+  //     role: 'reload'
+  //   },
+  //   {
+  //     label: '关于',
+  //     role: 'about'
+  //   },
+  //   {
+  //     label: '关于',
+  //     role: 'about'
+  //   },
+  // ]
+  // const menu =  Menu.buildFromTemplate(menuTemp)
+
+  // Menu.setApplicationMenu(menu)
 
   // 避免白屏的问题
   win.on('ready-to-show', () => {

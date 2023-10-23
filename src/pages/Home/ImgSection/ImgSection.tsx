@@ -91,6 +91,23 @@ export default function ImgSection() {
     }
   }
 
+const btnGroups =          
+(srcList.length > 4 ? (
+<div>
+
+<div className='pre-btn'>
+  <Button shape='circle' type='outline' onClick={scrollLeft} icon={<IconCaretLeft />} />
+  <Button shape='circle' type='outline' onClick={scrollLeftX4} icon={<IconBackward />} />
+</div>
+<div className='next-btn'>
+  <Button shape='circle' type='outline' onClick={scrollRight} icon={<IconCaretRight />} />
+  <Button shape='circle' type='outline' onClick={scrollRightX4} icon={<IconForward />} />
+</div>
+</div>
+
+):'')
+
+
   return (
 
     srcList.length > 0 ? (
@@ -118,18 +135,19 @@ export default function ImgSection() {
             </Space>
           </Image.PreviewGroup>
         </div>
+        {btnGroups}
 
-        <div className='pre-btn'>
+{/*          
+        srcList.length  (<div className='pre-btn'>
           <Button shape='circle' type='outline' onClick={scrollLeft} icon={<IconCaretLeft />} />
-
           <Button shape='circle' type='outline' onClick={scrollLeftX4} icon={<IconBackward />} />
-
         </div>
         <div className='next-btn'>
           <Button shape='circle' type='outline' onClick={scrollRight} icon={<IconCaretRight />} />
           <Button shape='circle' type='outline' onClick={scrollRightX4} icon={<IconForward />} />
-        
-        </div>
+        </div>) */}
+
+
       </div>
     ) : (
       <div className='upload-box'>
