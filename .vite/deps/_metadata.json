@@ -1,0 +1,68 @@
+{
+  "hash": "e7f39c83",
+  "browserHash": "d0b3a3fc",
+  "optimized": {
+    "react/jsx-dev-runtime": {
+      "src": "../../node_modules/.pnpm/react@18.2.0/node_modules/react/jsx-dev-runtime.js",
+      "file": "react_jsx-dev-runtime.js",
+      "fileHash": "33724c1c",
+      "needsInterop": true
+    },
+    "react": {
+      "src": "../../node_modules/.pnpm/react@18.2.0/node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "0a3c0c6f",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/.pnpm/react-dom@18.2.0_react@18.2.0/node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "1fa25950",
+      "needsInterop": true
+    },
+    "react-router-dom": {
+      "src": "../../node_modules/.pnpm/react-router-dom@6.15.0_react-dom@18.2.0_react@18.2.0/node_modules/react-router-dom/dist/index.js",
+      "file": "react-router-dom.js",
+      "fileHash": "4ca29954",
+      "needsInterop": false
+    },
+    "@arco-design/web-react": {
+      "src": "../../node_modules/.pnpm/registry.npmmirror.com+@arco-design+web-react@2.54.1_@types+react@18.2.21_react-dom@18.2.0_react@18.2.0/node_modules/@arco-design/web-react/es/index.js",
+      "file": "@arco-design_web-react.js",
+      "fileHash": "38c89660",
+      "needsInterop": false
+    },
+    "electron": {
+      "src": "../../node_modules/.pnpm/electron@24.8.1/node_modules/electron/index.js",
+      "file": "electron.js",
+      "fileHash": "969e1754",
+      "needsInterop": true
+    },
+    "@arco-design/web-react/icon": {
+      "src": "../../node_modules/.pnpm/registry.npmmirror.com+@arco-design+web-react@2.54.1_@types+react@18.2.21_react-dom@18.2.0_react@18.2.0/node_modules/@arco-design/web-react/icon/index.es.js",
+      "file": "@arco-design_web-react_icon.js",
+      "fileHash": "bf431dde",
+      "needsInterop": false
+    },
+    "exceljs": {
+      "src": "../../node_modules/.pnpm/exceljs@4.3.0/node_modules/exceljs/dist/exceljs.min.js",
+      "file": "exceljs.js",
+      "fileHash": "aed2208c",
+      "needsInterop": true
+    }
+  },
+  "chunks": {
+    "chunk-F3HDC5XB": {
+      "file": "chunk-F3HDC5XB.js"
+    },
+    "chunk-KNNZN7U2": {
+      "file": "chunk-KNNZN7U2.js"
+    },
+    "chunk-JBYQFRIC": {
+      "file": "chunk-JBYQFRIC.js"
+    },
+    "chunk-WNKWOKNR": {
+      "file": "chunk-WNKWOKNR.js"
+    }
+  }
+}
