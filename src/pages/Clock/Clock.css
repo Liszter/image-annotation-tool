@@ -1,0 +1,80 @@
+/* 外层 */
+.clock-page-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #202020;
+}
+
+
+.clock-monitor {
+  font-family: YeJing;
+  font-size: 80px;
+  color: rgb(235, 234, 233);
+  padding: 20px;
+
+  border-radius: 33px;
+  box-shadow: inset 11px 11px 22px #101010, inset -11px -11px 22px #303030;
+}
+
+.clock__gap {
+  padding: 0 5px;
+}
+
+
+.clock__hour, .clock__minutes {
+  display: inline-block;
+  width: 80px;
+  text-align: center;
+}
+
+.tool-bar {
+  padding-top: 8px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.tool-bar button{
+
+  background-color: transparent;
+  border: none;
+  outline: none;
+
+  color: #ccc;
+  padding: 4px 8px;
+  border-radius: 6px;
+  box-shadow: 4px 4px 4px #333 inset,
+  -4px -4px 4px #333 inset ;
+}
+
+
+.tool-bar button:hover {
+  color: #eee;
+  cursor: pointer;
+}
+
+.tool-bar button:active {
+  color: #999;
+
+  box-shadow: 4px 4px 4px #444 inset,
+  -4px -4px 4px #444 inset ;
+}
+
+
+@keyframes shake {
+  0% {
+   transform: scale(0.8);
+  }
+  50% {
+    transform: scale(1.1);
+   }
+  100% {
+   transform: scale(1);
+  }
+}
+
+.shake {
+  animation:  shake 3s infinite ease ;
+}

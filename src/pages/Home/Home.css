@@ -1,0 +1,31 @@
+.home-container {
+  background-color: #fff;
+  padding: 20px;
+}
+  
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 20px;
+}
+.justify-between {
+  justify-content: flex-start;
+}
+
+.justify-start {
+  justify-content: flex-start;
+}
+
+.flex >div {
+  width: 174px;
+  padding-right: 10px;
+
+}
+
+.title-box {
+  background-color: rgb(220, 220, 220);
+  color: #000;
+  height: 32px;
+  line-height: 32px;
+  padding-left: 6px;
+}
