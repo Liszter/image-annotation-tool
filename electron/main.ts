@@ -1,7 +1,7 @@
 /*
  * @Author: liszter <liszter@qq.com>
  * @Date: 2023-08-29 10:48:37
- * @LastEditTime: 2023-10-25 10:24:08
+ * @LastEditTime: 2023-10-26 14:06:15
  * @LastEditors: lishutao
  * @Description: 暂无
  * @FilePath: \image-annotation-tool\electron\main.ts
@@ -10,6 +10,7 @@ import { app, BrowserWindow, dialog, ipcMain, screen, Menu } from 'electron'
 import path from 'node:path'
 
 import fs from 'fs';
+
 
 // The built directory structure
 //
@@ -25,6 +26,30 @@ process.env.PUBLIC = app.isPackaged ? process.env.DIST : path.join(process.env.D
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true'
 
 let win: BrowserWindow | null
+
+
+function showConfirmationDialog() {
+  const options = {
+    type: 'question',
+    buttons: ['取消', '重启'],
+    defaultId: 1,
+    title: '重启提醒',
+    message: '确定要重启应用吗?',
+    cancelId: 0
+  };
+
+  dialog.showMessageBox(win, options).then((response) => {
+    if (response.response === 1) {
+      reloadPage();
+    }
+  });
+}
+
+function reloadPage() {
+  win.reload();
+}
+
+
 // 🚧 Use ['ENV_NAME'] avoid vite:define plugin - Vite@2.x
 const VITE_DEV_SERVER_URL = process.env['VITE_DEV_SERVER_URL']
 
@@ -44,8 +69,6 @@ const { width, height } = screen.getPrimaryDisplay().bounds;
       // enableRemoteModule: true,//开启remote模块
     },
     width: width,
-    minWidth: width,
-    minHeight: height,
     height: height,
     show: false, // 默认不显示
     // 永远置顶
@@ -70,23 +93,23 @@ const { width, height } = screen.getPrimaryDisplay().bounds;
   }
 
 
-  // const menuTemp = [
-  //   { 
-  //     label: '重置',
-  //     role: 'reload'
-  //   },
-  //   {
-  //     label: '关于',
-  //     role: 'about'
-  //   },
-  //   {
-  //     label: '关于',
-  //     role: 'about'
-  //   },
-  // ]
-  // const menu =  Menu.buildFromTemplate(menuTemp)
+  const menuTemp = [
+    { 
+      label: '重置',
+      accelerator: 'CmdOrCtrl+R',
+      click() {
+        // 在这里触发前置方法
+        showConfirmationDialog();
+      }
+    },
+    {
+      label: '关于',
+      role: 'about'
+    },
+  ]
+  const menu =  Menu.buildFromTemplate(menuTemp)
 
-  // Menu.setApplicationMenu(menu)
+  Menu.setApplicationMenu(menu)
 
   // 避免白屏的问题
   win.on('ready-to-show', () => {

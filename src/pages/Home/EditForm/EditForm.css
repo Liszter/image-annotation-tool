@@ -1,16 +1,11 @@
-.home-container {
-  background-color: #fff;
-  padding: 20px;
-}
-
 /* foot */
 .footer-form {
+  box-sizing: border-box;
   width: 1880px;
   height: 480px;
-  position: absolute;
-  bottom: 0px;
-  left: 0;
-  margin: 20px;
+  /* position: absolute; */
+  /* bottom: 0px; */
+  /* left: 0; */
 }
   
 .flex {
