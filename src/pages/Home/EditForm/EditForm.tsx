@@ -16,6 +16,8 @@ const options1 = ['不熟', '尚熟', '成熟', '过熟'];
 
 export default function EditForm() {
 
+
+
   const [visible, setVisible] = React.useState(false);
 
   // 表格数据
@@ -42,9 +44,13 @@ export default function EditForm() {
 
   // 导出  setVisible(false)
   const confirmBtn = () => {
+    setOutputBtnDisabled(true)
+
     const resultPath = storage.get('resultPath')
     createExcel(resultPath, tableValues, resultPath)
-
+    setTimeout(() => {
+      setOutputBtnDisabled(false);
+    }, 3000);
   }
 
   // 导出功能
