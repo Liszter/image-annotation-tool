@@ -21,10 +21,26 @@ export default function EditForm() {
   const [visible, setVisible] = React.useState(false);
 
   // 表格数据
-  const [tableValues, setTableValues] = React.useState({one: {}, two: {}, three: {}});
+  const [tableValues, setTableValues] = React.useState({ one: {}, two: {}, three: {} });
 
 
   const [form] = Form.useForm();
+
+  let successFlag = false
+  // 监听主进程发送的事件
+
+  const handleExport = (event, arg) => {
+    if (!successFlag) {
+      successFlag = true
+      setVisible(false)
+      // Message.success('导出成功!')
+      setTimeout(function () {
+        successFlag = false
+      }, 3000)
+    }
+  }
+  ipcRenderer.removeListener('saveFileResponse', handleExport);
+  ipcRenderer.on('saveFileResponse', handleExport)
 
   // 默认false
   const [outputBtnDisabled, setOutputBtnDisabled] = useState(false);
@@ -42,15 +58,25 @@ export default function EditForm() {
     });
   };
 
+
+  let flag = false
   // 导出  setVisible(false)
   const confirmBtn = () => {
-    setOutputBtnDisabled(true)
 
-    const resultPath = storage.get('resultPath')
-    createExcel(resultPath, tableValues, resultPath)
-    setTimeout(() => {
-      setOutputBtnDisabled(false);
-    }, 3000);
+    if (!flag) {
+      flag = true
+
+      setOutputBtnDisabled(true)
+
+      const resultPath = storage.get('resultPath')
+      createExcel(resultPath, tableValues, resultPath)
+      setTimeout(() => {
+        setOutputBtnDisabled(false);
+        flag = false
+      }, 3000);
+    }
+
+
   }
 
   // 导出功能
@@ -62,8 +88,9 @@ export default function EditForm() {
       // 创建 excel  values 表格数据
       // 导出前校验一下
       // path  路径
-    
-      confirmBtn()
+      setVisible(true)
+
+      // confirmBtn()
     } catch (e) {
       setVisible(true)
     }

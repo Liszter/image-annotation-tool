@@ -16,6 +16,7 @@ import uploadImage from '../../../assets/icon_upload.svg'
 export default function ImgSection() {
 
   const [documentSize, setDocumentSize] = useState({ width: 0, height: 0 });
+  const [screenRate, setScreenRate] = useState(1);
 
 
   useEffect(() => {
@@ -24,6 +25,9 @@ export default function ImgSection() {
         width: document.documentElement.clientWidth,
         height: document.documentElement.clientHeight
       });
+      const windowH = document.documentElement.clientHeight,
+      windowW = document.documentElement.clientWidth;
+      setScreenRate(Math.min(windowH / 998, windowW / 1920))
     };
 
     // 初始化时获取一次宽高
@@ -196,14 +200,14 @@ export default function ImgSection() {
       <div className='img-section'>
 
         <Modal
-          title='查看图片'
+          title={srcList[showFlagIndex].name}
           visible={previewVisible}
           autoFocus={false}
           focusLock={true}
           onOk={() => priviewImageOk(srcList[showFlagIndex].name)}
           onCancel={() => setPreviewVisible(false)}
           okText={'复制名称'}
-          style={{ cursor: 'move', width: documentSize.width * 0.9, height: documentSize.height * 0.95 }}
+          style={{ cursor: 'move', width: 1920 *screenRate  *0.9, height: 1080 * screenRate *0.9 }}
         >
           <div className='preview-img'>
             {/* 
@@ -211,8 +215,8 @@ export default function ImgSection() {
            */}
             {btnGroupsPreview}
 
-            {srcList[showFlagIndex].name}
-            <Image src={srcList[showFlagIndex].path} width={documentSize.width * 0.6} height={documentSize.height * 0.76} />
+   
+            <Image src={srcList[showFlagIndex].path}  height={720 * screenRate} width={1420 * screenRate } />
           </div>
         </Modal>
 

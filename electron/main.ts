@@ -1,7 +1,7 @@
 /*
  * @Author: liszter <liszter@qq.com>
  * @Date: 2023-08-29 10:48:37
- * @LastEditTime: 2023-10-26 15:03:41
+ * @LastEditTime: 2023-10-27 11:34:57
  * @LastEditors: lishutao
  * @Description: 暂无
  * @FilePath: \image-annotation-tool\electron\main.ts
@@ -93,23 +93,23 @@ const { width, height } = screen.getPrimaryDisplay().bounds;
   }
 
 
-  // const menuTemp = [
-  //   { 
-  //     label: '重置',
-  //     accelerator: 'CmdOrCtrl+R',
-  //     click() {
-  //       // 在这里触发前置方法
-  //       showConfirmationDialog();
-  //     }
-  //   },
-  //   {
-  //     label: '关于',
-  //     role: 'about'
-  //   },
-  // ]
-  // const menu =  Menu.buildFromTemplate(menuTemp)
+  const menuTemp = [
+    { 
+      label: '重置',
+      accelerator: 'CmdOrCtrl+R',
+      click() {
+        // 在这里触发前置方法
+        showConfirmationDialog();
+      }
+    },
+    {
+      label: '关于',
+      role: 'about'
+    },
+  ]
+  const menu =  Menu.buildFromTemplate(menuTemp)
 
-  // Menu.setApplicationMenu(menu)
+  Menu.setApplicationMenu(menu)
 
   // 避免白屏的问题
   win.on('ready-to-show', () => {
@@ -149,7 +149,7 @@ const { width, height } = screen.getPrimaryDisplay().bounds;
           event.reply('saveFileResponse', { success: false, error: err.message });
         });
     }
-
+    ipcMain.removeListener('saveFile', handleSaveFile);
     ipcMain.on('saveFile', handleSaveFile);
 
 

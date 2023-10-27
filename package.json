@@ -1,7 +1,7 @@
 {
   "name": "image-annotation-tool",
   "private": true,
-  "version": "0.0.4",
+  "version": "1.0.1",
   "author": "liszter",
   "description": "image-annotation-tool",
   "scripts": {

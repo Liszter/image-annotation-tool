@@ -173,8 +173,7 @@
 }
 
 .preview-img {
-  width: 100%;
-  height: 100%;
+  overflow: hidden;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -185,7 +184,7 @@
 .preview-btn .pre-btn {
   position: absolute;
   left: 10px;
-  top: 375px;
+  top: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -196,13 +195,16 @@
 }
 
 .preview-btn  .next-btn {
+
   position: absolute;
   right: 10px;
-  top: 375px;
+  top: 50%;
+  
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
+
 
 .next-btn button {
   margin: 10px 0;
