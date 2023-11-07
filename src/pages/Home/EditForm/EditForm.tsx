@@ -69,15 +69,20 @@ export default function EditForm() {
       setOutputBtnDisabled(true)
 
       const resultPath = storage.get('resultPath')
+      console.log(22222333444, tableValues)
       createExcel(resultPath, tableValues, resultPath)
       setTimeout(() => {
         setOutputBtnDisabled(false);
         flag = false
       }, 3000);
     }
-
-
   }
+
+  const cancelBtn = () => {
+    setVisible(false)
+    flag = false
+  }
+  
 
   // 导出功能
   const handleExportExcel = async () => {
@@ -106,7 +111,7 @@ export default function EditForm() {
         title='提示'
         visible={visible}
         onOk={() => confirmBtn()}
-        onCancel={() => setVisible(false)}
+        onCancel={() => cancelBtn()}
         autoFocus={false}
         focusLock={true}
       >
@@ -127,8 +132,9 @@ export default function EditForm() {
             required: (_, { label }) => `必须填写 ${label}`,
           }}
           onValuesChange={(_, values) => {
-            console.log(12123123, values);
-            setTableValues(values);
+            setTableValues(Object.assign(tableValues,values));
+
+            // console.log(3333, tableValues)
           }}
         >
           <div className='title-box'>
